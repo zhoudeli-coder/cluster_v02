@@ -13,10 +13,10 @@ public class CustomerUserController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @PostMapping("/")
+    @PostMapping
     public String add(User user) {
         try {
-            restTemplate.postForObject(REST_URL_PREFIX + "/", user, String.class);
+            restTemplate.postForObject(REST_URL_PREFIX, user, String.class);
         } catch (Exception e) {
             return String.format("添加失败[%s]", e.getMessage());
         }
@@ -33,7 +33,7 @@ public class CustomerUserController {
         return "删除成功";
     }
 
-    @PutMapping("/")
+    @PutMapping
     public String update(User user) {
         try {
             restTemplate.put(REST_URL_PREFIX, user, String.class);
